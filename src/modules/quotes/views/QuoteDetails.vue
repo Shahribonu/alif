@@ -27,15 +27,15 @@ const quotes = ref([]);
 const selectedQuote = ref(null);
 
 const id = routes.params.id;
-console.log(id, "id"); //routerdagi id chiqyapti
+console.log(id, "id");
 
 onMounted(async () => {
   await quoteStore.FETCH_QUOTES();
   quotes.value = quoteStore.GET_QUOTES.data;
-  console.log(quotes.value); //array chiqyapti
+  console.log(quotes.value);
 
   selectedQuote.value = quotes.value.find((item) => item.id === id);
-  console.log(selectedQuote.value); // lekin bu undefined
+  console.log(selectedQuote.value);
 });
 </script>
 

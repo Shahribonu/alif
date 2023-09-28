@@ -3,7 +3,6 @@
     <v-form @submit.prevent="addQuote">
       <v-row>
         <v-col cols="12">
-          <!-- <v-text-field v-model="quote.text" label="Text"></v-text-field> -->
           <v-textarea v-model="quote.text" label="Quote..."></v-textarea>
 
           <v-text-field v-model="quote.author" label="Author"></v-text-field>

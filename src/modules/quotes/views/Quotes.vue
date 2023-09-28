@@ -7,7 +7,6 @@
       v-model="searchText"
     />
 
-    <!-- Adding form -->
     <v-btn
       class="openAddQuote"
       v-if="!openAddQuote"
@@ -27,8 +26,6 @@
       @close="openEditQuote = false"
       @quoteCreated="handleQuoteEdited"
     />
-
-    <!--  -->
   </div>
 
   <div class="allQuotes">

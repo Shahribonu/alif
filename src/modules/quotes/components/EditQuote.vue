@@ -3,7 +3,6 @@
     <v-form @submit.prevent="editQuote">
       <v-row>
         <v-col cols="12">
-          <!-- <v-text-field v-model="quote.text" label="Text"></v-text-field> -->
           <!-- <v-textarea v-model="quote.text" label="Quote..."></v-textarea>
 
           <v-text-field v-model="quote.author" label="Author"></v-text-field>
@@ -35,8 +34,8 @@ const selectedQuote = ref(null);
 const routes = useRoute();
 const id = routes.params.id;
 
-// selectedQuote.value = quotes.value.find((item) => item.id === id);
-selectedQuote.value = quotes.value.filter((item) => item.id === id)[0];
+selectedQuote.value = quotes.value.find((item) => item.id === id);
+// selectedQuote.value = quotes.value.filter((item) => item.id === id)[0];
 console.log(selectedQuote, "edittt");
 const quote = { ...selectedQuote };
 

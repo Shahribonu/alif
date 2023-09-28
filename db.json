@@ -1,0 +1,44 @@
+{
+  "quotes": [
+    {
+      "id": 1,
+      "text": "Be who you are and say what you feel, because those who mind don’t matter, and those who matter don’t mind",
+      "author": "Bernar",
+      "genre": "motiv",
+      "generationTime": "9/28/2023, 8:25:35 PM",
+      "updateTime": null
+    },
+    {
+      "id": 2,
+      "text": "Be who you are and say what you feel, because those who mind don’t matter, and those who matter don’t mind",
+      "author": "Bernar",
+      "genre": "motiv",
+      "generationTime": "9/28/2023, 8:25:35 PM",
+      "updateTime": null
+    },
+    {
+      "id": 3,
+      "text": "You’ve gotta dance like there’s nobody watching, Love like you’ll never be hurt, Sing like there’s nobody listening, And live like it’s heaven on earth",
+      "author": "Purkey",
+      "genre": "motiv",
+      "generationTime": "9/28/2023, 9:51:59 PM",
+      "updateTime": null
+    },
+    {
+      "id": 4,
+      "text": "You know you’re in love when you can’t fall asleep because reality is finally better than your dreams",
+      "author": "Seuss",
+      "genre": "motiv",
+      "generationTime": "9/28/2023, 9:52:28 PM",
+      "updateTime": null
+    },
+    {
+      "id": 5,
+      "text": "If you want to know what a man’s like, take a good look at how he treats his inferiors, not his equals",
+      "author": "Harry Potter",
+      "genre": "motiv",
+      "generationTime": "9/28/2023, 9:53:01 PM",
+      "updateTime": null
+    }
+  ]
+}

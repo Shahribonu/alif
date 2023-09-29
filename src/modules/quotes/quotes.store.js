@@ -19,6 +19,7 @@ export const useQuoteStore = defineStore('quote', {
   actions: {
    async FETCH_QUOTES(){
       this.quotes = await fetchAllQuotes()
+      
     },
    
    async ADD_QUOTE(newQuote) {
@@ -28,7 +29,7 @@ export const useQuoteStore = defineStore('quote', {
 
     async DELETE_QUOTE(quoteId) {
           await deleteQuote(quoteId); 
-          this.quotes = this.quotes.filter(quote => quote.id !== quoteId);
+          this.quotes.data = this.quotes?.data?.filter(quote => quote.id !== Number(quoteId));
       },
 
       async EDIT_QUOTE(updatedQuote) {

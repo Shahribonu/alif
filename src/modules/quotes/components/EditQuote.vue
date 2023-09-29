@@ -3,11 +3,11 @@
     <v-form @submit.prevent="editQuote">
       <v-row>
         <v-col cols="12">
-          <!-- <v-textarea v-model="quote.text" label="Quote..."></v-textarea>
+          <v-textarea v-model="quote.text" label="Quote..."></v-textarea>
 
           <v-text-field v-model="quote.author" label="Author"></v-text-field>
 
-          <v-text-field v-model="quote.genre" label="Genre"></v-text-field> -->
+          <v-text-field v-model="quote.genre" label="Genre"></v-text-field>
         </v-col>
 
         <v-col cols="12">
@@ -22,26 +22,28 @@
 </template>
 
 <script setup>
-import { ref, onMounted, defineEmits } from "vue";
+import { ref, onMounted, defineEmits, defineProps } from "vue";
 import { useQuoteStore } from "../quotes.store";
 import { useToast } from "vue-toastification";
-import { useRoute } from "vue-router";
+
 const quoteStore = useQuoteStore();
 const quotes = ref([]);
 const toast = useToast();
+const selectedQuote = ref([]);
+const quote = ref([]);
 const emit = defineEmits();
-const selectedQuote = ref(null);
-const routes = useRoute();
-const id = routes.params.id;
 
-selectedQuote.value = quotes.value.find((item) => item.id === id);
-// selectedQuote.value = quotes.value.filter((item) => item.id === id)[0];
-console.log(selectedQuote, "edittt");
-const quote = { ...selectedQuote };
+// const openEditQuote = defineProps("openEditQuote");
+const openEditQuote = ref(4);
 
 onMounted(async () => {
   await quoteStore.FETCH_QUOTES();
   quotes.value = quoteStore.GET_QUOTES.data;
+
+  selectedQuote.value = quotes.value.find(
+    (item) => item.id === Number(openEditQuote.value)
+  );
+  quote.value = JSON.parse(JSON.stringify(selectedQuote.value));
 });
 
 async function editQuote() {
@@ -50,6 +52,15 @@ async function editQuote() {
     return;
   }
 
+  const req = {
+    id: 4,
+    text: quote.value.text,
+    author: quote.value.author,
+    genre: quote.value.genre,
+    generationTime: quote.value.generationTime,
+    updateTime: new Date().toLocaleDateString,
+  };
+  const res = await quoteStore.EDIT_QUOTE(req);
   toast.success("Quote edited successfully");
   emit("quote-edited", quote.value);
   emit("close");

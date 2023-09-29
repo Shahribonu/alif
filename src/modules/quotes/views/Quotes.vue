@@ -6,7 +6,7 @@
       placeholder="Search... "
       v-model="searchText"
     />
-
+    <!-- Add quote btn -->
     <v-btn
       class="openAddQuote"
       v-if="!openAddQuote"
@@ -14,20 +14,22 @@
     >
       Add Quote</v-btn
     >
-
+    <!-- Add quote Form -->
     <AddQuote
       v-else
       @close="openAddQuote = false"
       @quoteCreated="handleQuoteAdded"
     />
-
+    <!-- Edit quote form -->
     <EditQuote
+      :openEditQuote="openEditQuote?.value"
       v-if="openEditQuote"
       @close="openEditQuote = false"
-      @quoteCreated="handleQuoteEdited"
+      @quoteEdited="handleQuoteEdited"
     />
   </div>
 
+  <!-- All quotes render -->
   <div class="allQuotes">
     <blockquote
       v-for="quote in filteredQuotes"
@@ -52,7 +54,7 @@
       </div>
     </blockquote>
   </div>
-
+  <!-- Delete dialog form -->
   <v-dialog v-model="deleteDialog" class="d-flex justify-center">
     <div class="dialog p-5 w-[500px] d-flex justify-center flex-col mx-auto">
       <h2 class="text-xl font-semibold text-center mb-3">Are you sure?</h2>
@@ -68,7 +70,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, computed, watch } from "vue";
 import { useQuoteStore } from "../quotes.store";
 import { useRouter } from "vue-router";
 import AddQuote from "../components/AddQuote.vue";
@@ -108,7 +110,7 @@ async function handleQuoteAdded(newQuote) {
 }
 async function handleQuoteEdited(updatedQuote) {
   try {
-    await quoteStore.EDIT_QUOTE(updatedQuote.id, updatedQuote);
+    await quoteStore.EDIT_QUOTE(updatedQuote);
     quotes.value = quoteStore.GET_QUOTES.data;
   } catch (error) {
     console.error(error);
@@ -127,6 +129,12 @@ async function deleteQuote(id) {
     quotes.value = quoteStore.GET_QUOTES.data;
   }
 }
+
+function myFunction() {
+  console.log("myValue changed:", openEditQuote.value);
+}
+watch(openEditQuote, myFunction);
+// console.log(openEditQuote?., "next");
 </script>
 
 <style scoped>

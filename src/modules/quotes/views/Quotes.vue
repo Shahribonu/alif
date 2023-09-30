@@ -83,12 +83,17 @@ const searchText = ref("");
 let deleteDialog = ref(null);
 const toast = useToast();
 let openAddQuote = ref(quoteStore.OPEN_ADD_QUOTE);
-let openEditQuote = ref(null);
+let openEditQuote = ref();
 const quotes = ref([]);
 
 onMounted(async () => {
   await quoteStore.FETCH_QUOTES();
   quotes.value = quoteStore.GET_QUOTES.data;
+
+  function myFunction() {
+    console.log("Value changed:", openEditQuote.value);
+  }
+  watch(openEditQuote, myFunction);
 });
 
 const filteredQuotes = computed(() => {
@@ -129,12 +134,6 @@ async function deleteQuote(id) {
     quotes.value = quoteStore.GET_QUOTES.data;
   }
 }
-
-function myFunction() {
-  console.log("myValue changed:", openEditQuote.value);
-}
-watch(openEditQuote, myFunction);
-// console.log(openEditQuote?., "next");
 </script>
 
 <style scoped>

@@ -27,4 +27,15 @@
 .navbar {
   background-color: #78c0a8;
 }
+@media (max-width: 640px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+  }
+  .user-info {
+    display: none;
+  }
+}
 </style>

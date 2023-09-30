@@ -1,31 +1,27 @@
 <template>
-  <div class="border w-[800px] mt-5">
-    <v-table width="500px">
+  <div class="responsive-table border w-[800px] mt-5">
+    <v-table class="" width="500px">
       <tbody>
         <tr>
-          <td>Quote:</td>
+          <td class="font-bold">Quote:</td>
           <td>{{ selectedQuote?.text }}</td>
         </tr>
         <tr>
-          <td>Author:</td>
+          <td class="font-bold">Author:</td>
           <td>{{ selectedQuote?.author }}</td>
         </tr>
         <tr>
-          <td>Genre:</td>
+          <td class="font-bold">Genre:</td>
           <td>{{ selectedQuote?.genre }}</td>
         </tr>
         <tr>
-          <td>Generation Time:</td>
+          <td class="font-bold">Generation Time:</td>
           <td>{{ selectedQuote?.generationTime }}</td>
-        </tr>
-        <tr>
-          <td>Update Time:</td>
-          <td>{{ selectedQuote?.updateTime }}</td>
         </tr>
       </tbody>
     </v-table>
   </div>
-  <router-link to="/" class="flex justify-center my-5 text-2xl text-blue-400"
+  <router-link to="/" class="flex my-5 text-xl text-blue-400"
     >Go Back Home</router-link
   >
 </template>
@@ -48,4 +44,13 @@ onMounted(async () => {
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.responsive-table {
+  width: 100%;
+}
+@media (max-width: 640px) {
+  .responsive-table {
+    max-width: auto;
+  }
+}
+</style>

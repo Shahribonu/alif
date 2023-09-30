@@ -69,4 +69,13 @@ async function addQuote() {
 v-text-field {
   margin: 0;
 }
+@media (max-width: 640px) {
+  .addQuote {
+    width: 400px;
+    right: 0;
+    left: 0;
+    margin: 10px auto;
+    transform: none;
+  }
+}
 </style>

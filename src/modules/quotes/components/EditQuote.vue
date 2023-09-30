@@ -73,11 +73,21 @@ async function editQuote() {
   right: 50%;
   top: 50%;
   transform: translate(50%, -50%);
-  width: 500px !important;
+  width: 500px;
   z-index: 1000;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 v-text-field {
   margin: 0;
+}
+@media (max-width: 640px) {
+  .addQuote {
+    width: 400px !important;
+    margin: 10px auto;
+    position: fixed;
+    right: 50%;
+    top: 50% !important;
+    transform: translate(50%, -50%);
+  }
 }
 </style>
